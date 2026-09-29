@@ -1,0 +1,25 @@
+# Reverse proxy example: Caddy in front of PteroOps (HTTP transport).
+# Caddy obtains TLS certificates automatically.
+#
+#   pteroops --transport http        # 127.0.0.1:8080
+
+pteroops.example.com {
+    # Streamable HTTP (SSE) — disable response buffering and allow long-lived streams.
+    reverse_proxy /mcp* 127.0.0.1:8080 {
+        flush_interval -1
+        transport http {
+            read_timeout 1h
+            write_timeout 1h
+        }
+    }
+    reverse_proxy /ui*       127.0.0.1:8080
+    reverse_proxy /health    127.0.0.1:8080
+    reverse_proxy /ready     127.0.0.1:8080
+
+    # Keep /metrics internal unless you want it public:
+    # reverse_proxy /metrics 127.0.0.1:8080
+}
+
+# Notes
+# - PteroOps enforces Authorization: Bearer <PTERO_HTTP_TOKEN> itself; Caddy only adds TLS.
+# - The web console is at https://pteroops.example.com/ui (append ?token=... once).

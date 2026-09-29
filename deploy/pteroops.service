@@ -1,0 +1,28 @@
+[Unit]
+Description=PteroOps MCP server (AI SRE for Pterodactyl)
+Documentation=https://github.com/PotenFYR-Studios/PteroOps-MCP
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pteroops
+Group=pteroops
+WorkingDirectory=/opt/pteroops
+EnvironmentFile=/etc/pteroops/pteroops.env
+ExecStart=/usr/bin/node /opt/pteroops/dist/index.js --transport http --config /etc/pteroops/pteroops.yaml
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/pteroops
+StateDirectory=pteroops
+
+[Install]
+WantedBy=multi-user.target
+
+# Setup notes:
+#   useradd --system --home /opt/pteroops --shell /usr/sbin/nologin pteroops
+#   install -d -o pteroops -g pteroops /var/lib/pteroops /etc/pteroops
+#   PTERO_DATA_DIR=/var/lib/pteroops must be set in /etc/pteroops/pteroops.env

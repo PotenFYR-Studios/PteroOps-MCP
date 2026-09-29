@@ -1,0 +1,88 @@
+{
+  "name": "pteroops-mcp",
+  "version": "0.1.0",
+  "description": "AI SRE & self-healing operations for Pterodactyl — MCP server with persistent console intelligence, application detection, incident management and policy-controlled remediation.",
+  "type": "module",
+  "license": "MIT",
+  "author": "PotenFYR Studios",
+  "homepage": "https://github.com/PotenFYR-Studios/PteroOps-MCP#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PotenFYR-Studios/PteroOps-MCP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PotenFYR-Studios/PteroOps-MCP/issues"
+  },
+  "keywords": [
+    "pterodactyl",
+    "mcp",
+    "model-context-protocol",
+    "sre",
+    "self-healing",
+    "ai",
+    "llm",
+    "devops",
+    "game-server",
+    "incident-management",
+    "observability"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "bin": {
+    "pteroops": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": false
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint src tests --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "demo": "node scripts/demo-transcript.mjs",
+    "docs:install": "npm --prefix docs/site install",
+    "docs:dev": "npm --prefix docs/site run dev",
+    "docs:build": "npm --prefix docs/site run build",
+    "docs:preview": "npm --prefix docs/site run preview",
+    "prepack": "npm run build",
+    "release:check": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "release:pack": "npm pack"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "pg": "^8.23.0",
+    "redis": "^6.2.1",
+    "ws": "^8.18.0",
+    "yaml": "^2.5.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/node": "^22.10.0",
+    "@types/pg": "^8.23.1",
+    "@types/ws": "^8.5.12",
+    "eslint": "^9.9.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.8.0",
+    "vitest": "^5.0.2"
+  }
+}

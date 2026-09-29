@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pteroops
+  labels:
+    app.kubernetes.io/name: pteroops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: pteroops
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: pteroops
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: pteroops
+          image: ghcr.io/potenfyr-studios/pteroops-mcp:latest
+          args: ["--transport", "http"]
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: PTERO_HTTP_HOST
+              value: "0.0.0.0"
+            - name: PTERO_HTTP_PORT
+              value: "8080"
+            - name: PTERO_DATA_DIR
+              value: /app/data
+            - name: PTERO_DATABASE_DRIVER
+              value: sqlite
+          envFrom:
+            - secretRef:
+                name: pteroops-secrets
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: pteroops-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pteroops-data
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pteroops
+spec:
+  selector:
+    app.kubernetes.io/name: pteroops
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+---
+# Create the secret out of band, e.g.:
+#   kubectl create secret generic pteroops-secrets \
+#     --from-literal=PTERO_PANEL_PROD_URL=https://panel.example.com \
+#     --from-literal=PTERO_PANEL_PROD_CLIENT_KEY=ptlc_... \
+#     --from-literal=PTERO_HTTP_TOKEN="$(openssl rand -hex 32)"
+#
+# Multi-instance note: SQLite is single-writer. To run more than one replica,
+# switch to PostgreSQL (PTERO_DATABASE_DRIVER=postgres + PTERO_DATABASE_URL)
+# and set PTERO_REDIS_URL so monitoring/scheduler jobs take distributed locks.

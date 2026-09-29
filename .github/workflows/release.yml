@@ -1,0 +1,64 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to release (must match package.json)"
+        required: true
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci
+      - name: Verify package version matches the release
+        run: |
+          PKG_VERSION="$(node -p "require('./package.json').version")"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            REF_VERSION="${GITHUB_REF_NAME#v}"
+          else
+            REF_VERSION="${{ inputs.version }}"
+          fi
+          if [ "$PKG_VERSION" != "$REF_VERSION" ]; then
+            echo "package.json ($PKG_VERSION) != release ($REF_VERSION)"; exit 1
+          fi
+
+      - name: Run all quality gates
+        run: npm run release:check
+
+      - name: Build the release tarball
+        run: npm pack
+
+      - name: Attach the tarball to the GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: pteroops-mcp-*.tgz
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+
+      - name: Publish to npm (only when NPM_TOKEN is configured)
+        if: env.NPM_TOKEN != ''
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Note when npm publishing was skipped
+        if: env.NPM_TOKEN == ''
+        run: |
+          echo "::notice::NPM_TOKEN is not configured; the tarball was attached to the GitHub release but not published to npm."

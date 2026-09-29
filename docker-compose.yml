@@ -1,0 +1,19 @@
+services:
+  pteroops:
+    build: .
+    container_name: pteroops
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - pteroops-data:/app/data
+    environment:
+      PTERO_PANEL_PROD_URL: ${PTERO_PANEL_PROD_URL:-https://panel.example.com}
+      PTERO_PANEL_PROD_CLIENT_KEY: ${PTERO_PANEL_PROD_CLIENT_KEY:?set your ptlc_ key}
+      PTERO_PANEL_PROD_APPLICATION_KEY: ${PTERO_PANEL_PROD_APPLICATION_KEY:-}
+      PTERO_DEFAULT_PANEL: prod
+      PTERO_HTTP_TOKEN: ${PTERO_HTTP_TOKEN:?set an auth token for the HTTP transport}
+      PTERO_LOG_LEVEL: info
+
+volumes:
+  pteroops-data:

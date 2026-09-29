@@ -1,0 +1,128 @@
+# PteroOps configuration — copy to pteroops.config.yaml and fill in.
+# Values may reference environment variables with ${VAR} (required to be set).
+
+tenant: local
+
+panels:
+  production:
+    url: https://panel.example.com
+    clientKey: ${PTERO_PROD_CLIENT_KEY}
+    applicationKey: ${PTERO_PROD_APP_KEY}
+    # timeoutMs: 15000
+    # maxRetries: 3
+  # staging:
+  #   url: https://staging.example.com
+  #   clientKey: ${PTERO_STAGING_CLIENT_KEY}
+
+defaultPanel: production
+
+# Server groups: used by drift detection (ptero_compare_server_group) and
+# canary remediation (ptero_canary_remediate).
+groups:
+  minecraft: ["production/*"]
+
+# PteroOps-internal scheduled deterministic jobs.
+# kinds: health_scan | diagnose_scope | dependency_audit | backup_check | anomaly_scan | retention_prune
+schedules:
+  - { name: nightly-audit, kind: dependency_audit, every: 24h, scope: ["*"] }
+  - { name: disk-forecast, kind: anomaly_scan, every: 6h, scope: ["*"] }
+  - { name: nightly-prune, kind: retention_prune, every: 24h, scope: ["*"] }
+
+storage:
+  driver: sqlite                    # sqlite | postgres
+  dataDir: ./data
+  # postgresUrl: postgres://user:pass@host:5432/pteroops
+  # redisUrl: redis://127.0.0.1:6379  # distributed locks for multi-instance deployments
+
+retention:
+  preset: default                   # default | compliance | custom
+  auditDays: 0                      # 0 = keep forever
+  changesDays: 0
+  resolvedIncidentDays: 0
+
+console:
+  persist: true
+  retentionHours: 168
+  maxEventsPerServer: 200000
+  captureWarnAndAbove: false
+  backfillOnConnect: true
+
+monitoring:
+  enabled: true
+  intervalSeconds: 30
+  serverListCacheSeconds: 300
+  concurrency: 4
+  metricsRetentionHours: 72
+  processEventsRetentionDays: 30
+
+diagnostics:
+  defaultWindowMinutes: 30
+  maxEventsPerAnalysis: 5000
+  bundleCacheSeconds: 60
+
+remediation:
+  healthTimeoutSeconds: 300
+  healthPollSeconds: 10
+  stabilizationSeconds: 60
+  requireFreshBackupMinutes: 0      # >0 auto-creates a preflight backup for HIGH-risk plans
+  maxActionsPerPlan: 10
+  snapshotMaxBytes: 262144
+  snapshotRetentionDays: 30
+
+policy:
+  # allowedServers: ["production/*"]        # empty = all configured servers
+  protectedPaths: [".env", "*.pem", "*.key", "id_rsa*", "*.p12", "*.pfx"]
+  blockedCommands: ["^rm\\s+-rf\\s+/", "^mkfs", "^dd\\s+if=", "^shutdown", "^reboot", "^:(){"]
+  allowedCommands: []                        # empty = allow all not blocked
+  maxRestartsPerHour: 5
+  maxFileSizeBytes: 2000000
+  networkProbeAllowed: false                 # opt in to TCP/HTTP reachability probes
+  networkProbeTargets: []                    # host:port entries; when set, probes use ONLY these
+
+approval:
+  autoApprove: [start_server, create_backup, restart_after_verified_crash]
+  requireApproval:
+    - file_write
+    - dependency_update
+    - git_deploy
+    - git_rollback
+    - restore_backup
+    - kill_server
+    - database_modification
+    - startup_variable_change
+  deny: [delete_server, wipe_filesystem]
+  defaultExpiryMinutes: 120
+
+# maintenanceWindows:
+#   - name: business-hours
+#     servers: ["production/*"]
+#     denyAutomation: ["09:00-18:00"]
+#   - name: nightly-automation
+#     servers: ["*"]
+#     allowAutoLowRisk: ["02:00-05:00"]
+
+emergencyOverride: false
+
+git:
+  enabled: false
+  repositories: {}
+  # tokens:                            # enables commit history over the GitHub/GitLab API
+  #   github: ${GITHUB_TOKEN}
+  #   gitlab: ${GITLAB_TOKEN}
+  # apiBase:                           # self-hosted GitLab
+  #   gitlab: https://gitlab.example.com
+
+http:
+  enabled: false
+  host: 127.0.0.1
+  port: 8080
+  # authToken: ${PTEROOPS_HTTP_TOKEN}      # required for non-loopback binding
+  exposeMetrics: true
+
+log:
+  level: info
+  pretty: false
+
+redaction:
+  extraPatterns: []
+  extraSecrets: []

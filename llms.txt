@@ -1,0 +1,34 @@
+# PteroOps
+
+> PteroOps turns Pterodactyl into an AI-operable SRE platform: persistent console intelligence, application detection, crash-loop and health diagnosis, incidents, change correlation, and policy-controlled remediation with rollback — exposed through the Model Context Protocol.
+
+## Install (one-liner)
+
+- macOS/Linux: `curl -fsSL https://raw.githubusercontent.com/PotenFYR-Studios/PteroOps-MCP/main/scripts/install.sh | bash`
+- Windows: `irm https://raw.githubusercontent.com/PotenFYR-Studios/PteroOps-MCP/main/scripts/install.ps1 | iex`
+
+## Start here
+
+- [Getting Started](docs/getting-started.md): complete beginner guide — Pterodactyl API keys, install, connect your AI app, first questions, troubleshooting, FAQ
+- [Installation](docs/installation.md): installer flags, manual install, Docker, update/uninstall, offline installs, security notes
+- [Docs Index](docs/README.md): index of every document in docs/
+- Rendered docs site (same content, for humans): https://potenfyr-studios.github.io/PteroOps-MCP/ — built from these markdown files via `docs/site/`
+
+## Docs
+
+- [Agent Guide](docs/agent-guide.md): how AI agents and LLM applications should operate PteroOps safely — investigation ladder, tool chooser, evidence/confidence semantics, do-not list
+- [Capability Map](docs/capability-map.md): every capability (discovery → self-healing → code debugging) mapped to the tools that deliver it
+- [Monitoring](docs/monitoring.md): Prometheus metrics, alert rules, structured logs, web console
+- [MCP Reference](docs/mcp-reference.md): all 63 tools, 14 resources and 8 prompts with annotations, capability requirements and status
+- [Configuration](docs/configuration.md): panels, keys, policy, approvals, schedules, groups, remediation, monitoring, storage, transports, environment variables
+- [Integrations](docs/integrations.md): Claude Desktop, Claude Code, Cursor, VS Code, custom agents, Streamable HTTP, Docker
+
+## Status & design
+
+- [Status](docs/status.md): what is IMPLEMENTED / PARTIAL / PLANNED right now
+- [Architecture](ARCHITECTURE.md): layering, module map, flows, resilience, recorded decisions
+- [Security](SECURITY.md): guarantees, vulnerability reporting, operator checklist
+
+## For coding agents
+
+- [AGENTS.md](AGENTS.md): repository conventions, commands, layering rules, checklists for adding tools/detectors/persistence
