@@ -15,6 +15,25 @@ function customDomain(): string | null {
 const DOMAIN = customDomain();
 
 /**
+ * Absolute OG/Twitter/canonical URLs must match the real deploy origin: a
+ * custom domain served at the root, or the GitHub project page under
+ * /<repo>/. Mirrors customDomain() so adding public/CNAME later keeps the
+ * link preview correct.
+ */
+function seoOrigin(): Plugin {
+  const origin = DOMAIN
+    ? `https://${DOMAIN.replace(/^https?:\/\//, '').replace(/\/$/, '')}`
+    : 'https://potenfyr-studios.github.io/PteroOps-MCP';
+  return {
+    name: 'seo-origin',
+    transformIndexHtml(html) {
+      return html.replaceAll('%OG_ORIGIN%', origin);
+    },
+  };
+}
+
+
+/**
  * The site renders the repository's markdown docs (docs/*.md), which live
  * outside the Vite root — allow reading one level up and keep the raw imports working.
  */
@@ -29,7 +48,7 @@ function rawMarkdown(): Plugin {
 
 export default defineConfig({
   base: DOMAIN ? '/' : '/PteroOps-MCP/',
-  plugins: [react(), rawMarkdown()],
+  plugins: [react(), rawMarkdown(), seoOrigin()],
   build: {
     outDir: 'dist',
     target: 'es2020',
