@@ -16,7 +16,7 @@ export function consoleTools(): ToolDefinition[] {
       name: "ptero_console_query",
       title: "Query persistent console history",
       description:
-        "Searches stored console history with time windows, severities, text/regex, fingerprint or lifecycle-event filters. Modes: latest (default), first (first occurrence of a match), before (context immediately before a timestamp — e.g. 'what happened before the crash'), events (lifecycle/warning+ only). Results are bounded and grouped-friendly; never returns unbounded dumps. Read-only.",
+        "Searches stored console history with time windows, severities, text/regex, fingerprint or lifecycle-event filters. Modes: latest (default), first (first occurrence of a match), before (context immediately before a timestamp, e.g. 'what happened before the crash'), events (lifecycle/warning+ only). Results are bounded and grouped-friendly; never returns unbounded dumps. Read-only.",
       inputSchema: {
         server: serverArg,
         window: z.string().optional().describe('How far back to search, e.g. "20m", "2h". Ignored when "since" is given.'),

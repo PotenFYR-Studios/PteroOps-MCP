@@ -1,7 +1,7 @@
-# AGENTS.md — Guide for coding agents working on PteroOps-MCP
+# AGENTS.md. Guide for coding agents working on PteroOps-MCP
 
 This file tells AI coding agents (Claude Code, opencode, Cursor, Copilot, Codex, …) how to work
-in this repository. Humans should read [`docs/`](docs/README.md) instead — much of this
+in this repository. Humans should read [`docs/`](docs/README.md) instead, much of this
 duplicates it in agent-optimized form on purpose.
 
 ## What this repository is
@@ -14,11 +14,11 @@ first change.
 
 ## Read-first order (do not skip)
 
-1. `docs/status.md` — what actually exists right now (trust this over any assumption)
-2. `ARCHITECTURE.md` — layering and dependency rules you must not violate
-3. `docs/mcp-reference.md` — the MCP surface contract
-4. `CONTRIBUTING.md` — quality gates and what tests a change is expected to carry
-5. `docs/agent-guide.md` — how agents *operate* the product (informs tool behavior)
+1. `docs/status.md`, what actually exists right now (trust this over any assumption)
+2. `ARCHITECTURE.md`, layering and dependency rules you must not violate
+3. `docs/mcp-reference.md`, the MCP surface contract
+4. `CONTRIBUTING.md`, quality gates and what tests a change is expected to carry
+5. `docs/agent-guide.md`, how agents *operate* the product (informs tool behavior)
 
 ## Commands
 
@@ -37,7 +37,7 @@ first change.
 | Docs site (build) | `npm run docs:build` |
 
 A change is only complete when `npm run lint && npm run typecheck && npm run test && npm run build`
-all pass. If those scripts do not exist yet, you are in the bootstrap phase — create them as
+all pass. If those scripts do not exist yet, you are in the bootstrap phase, create them as
 part of the scaffold task.
 
 ## Repository map (current, see ARCHITECTURE.md)
@@ -72,7 +72,7 @@ deploy/            Docker/K8s/systemd/reverse-proxy manifests
 tests/             unit | repository | integration | mcp
 ```
 
-`docs/status.md` is the module-level truth — keep it current.
+`docs/status.md` is the module-level truth, keep it current.
 
 ## Non-negotiable rules
 
@@ -94,7 +94,7 @@ tests/             unit | repository | integration | mcp
 8. **Mutating actions** must go through: capability check → policy/risk → audit → change ledger.
    Use the shared wrappers rather than re-implementing per tool.
 9. **Bounded outputs.** Every list/query tool enforces limits, pagination metadata, and payload
-   caps. Console/log data is grouped and sampled — never dumped.
+   caps. Console/log data is grouped and sampled, never dumped.
 10. **Errors are structured** (`{code, message, hint?, retryable?, correlationId}`), typed in
     `src/shared/errors.ts`, never raw stack traces in MCP responses.
 

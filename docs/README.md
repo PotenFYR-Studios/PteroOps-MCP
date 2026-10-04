@@ -2,7 +2,7 @@
 
 Everything you need, from "what is this" to the full MCP surface reference.
 
-> Rendered site: **<https://potenfyr-studios.github.io/PteroOps-MCP/>** — the pages you are reading,
+> Rendered site: **<https://potenfyr-studios.github.io/PteroOps-MCP/>**, the pages you are reading,
 > built by `docs/site/` (Vite + React + Tailwind) from this directory. Run it locally with
 > `npm run docs:install && npm run docs:dev`.
 
@@ -10,7 +10,7 @@ Everything you need, from "what is this" to the full MCP surface reference.
 
 | Document | Read it when |
 | --- | --- |
-| [Getting Started](getting-started.md) | You are new to PteroOps (or MCP). Panels keys, install, connect your AI app, first prompts, troubleshooting, FAQ — no prior knowledge assumed |
+| [Getting Started](getting-started.md) | You are new to PteroOps (or MCP). Panels keys, install, connect your AI app, first prompts, troubleshooting, FAQ, no prior knowledge assumed |
 | [Installation](installation.md) | You want the one-liner installers, Docker, install flags, updating, uninstalling or offline installs |
 
 ## Operate it
@@ -29,7 +29,7 @@ Everything you need, from "what is this" to the full MCP surface reference.
 
 | Document | Contents |
 | --- | --- |
-| [Status](status.md) | What is implemented, partial or planned right now — the living tracker |
+| [Status](status.md) | What is implemented, partial or planned right now, the living tracker |
 | [ARCHITECTURE.md](../ARCHITECTURE.md) | Layering, module map, resilience model, recorded decisions |
 | [SECURITY.md](../SECURITY.md) | Threat boundary, guarantees, operator checklist |
 
@@ -37,5 +37,5 @@ Everything you need, from "what is this" to the full MCP surface reference.
 
 - Three-valued statuses everywhere: **IMPLEMENTED**, **PARTIAL** (with the exact caveat), **PLANNED**.
 - Examples are runnable as written; commands that mutate production include safety notes.
-- If a document and the code disagree, the code is wrong or the document is stale — file an issue
+- If a document and the code disagree, the code is wrong or the document is stale, file an issue
   or a PR fixing exactly one of them.

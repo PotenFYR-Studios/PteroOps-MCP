@@ -8,8 +8,8 @@ exist when `--transport http` is active.
 
 | Endpoint | Purpose |
 | --- | --- |
-| `GET /health` | Liveness — process is up (no dependencies touched) |
-| `GET /ready` | Readiness — database answers + at least one usable panel |
+| `GET /health` | Liveness, process is up (no dependencies touched) |
+| `GET /ready` | Readiness, database answers + at least one usable panel |
 | `GET /metrics` | Prometheus text exposition (no secrets, no Pterodactyl data) |
 | `GET /ui` | Read-only web console (overview, incidents, changes, topology, policies) |
 
@@ -86,7 +86,7 @@ groups:
       - alert: PteroOpsRemediationRollbacks
         expr: increase(pteroops_remediation_rollbacks_total[1h]) > 0
         annotations:
-          summary: "A remediation rolled back — review the incident"
+          summary: "A remediation rolled back, review the incident"
       - alert: PteroOpsMonitorStalled
         expr: pteroops_monitored_servers == 0
         for: 10m
@@ -112,18 +112,18 @@ rows, so a single grep follows an action from MCP call to audit record to change
 
 `GET /ui` (with the bearer token or `?token=` once) renders:
 
-- **Overview** — fleet counts, per-server health with scores, open incidents, recent changes
+- **Overview**, fleet counts, per-server health with scores, open incidents, recent changes
   (auto-refreshes every 30 s)
-- **Incidents** — list and per-incident pages with probable causes, evidence and notes
-- **Changes** — the change ledger with before/after hashes
-- **Topology** — nodes and relations from the infrastructure graph
-- **Policies** — the effective policy document
+- **Incidents**, list and per-incident pages with probable causes, evidence and notes
+- **Changes**, the change ledger with before/after hashes
+- **Topology**, nodes and relations from the infrastructure graph
+- **Policies**, the effective policy document
 
 It is strictly read-only: no tool calls, no mutations. All values are HTML-escaped.
 
 ## What to alert on first
 
-1. `pteroops_incidents_open` — something needs a human.
-2. `pteroops_health_status{status="crash_loop"}` — the flagship failure mode.
-3. `pteroops_remediation_rollbacks_total` — a fix made things worse and was undone.
-4. `pteroops_pterodactyl_api_rate_limited_total` — lower the monitoring interval.
+1. `pteroops_incidents_open`, something needs a human.
+2. `pteroops_health_status{status="crash_loop"}`, the flagship failure mode.
+3. `pteroops_remediation_rollbacks_total`, a fix made things worse and was undone.
+4. `pteroops_pterodactyl_api_rate_limited_total`, lower the monitoring interval.

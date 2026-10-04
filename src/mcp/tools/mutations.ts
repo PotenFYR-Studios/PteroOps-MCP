@@ -14,7 +14,7 @@ export function mutationTools(): ToolDefinition[] {
       name: "ptero_power_action",
       title: "Control server power",
       description:
-        "Starts, stops, restarts or kills a server. MUTATING and audited. Rules: (1) never restart before diagnosing — a restart destroys crash evidence and, for crash loops, guarantees another crash; (2) 'kill' is HIGH risk and requires confirm=true after explicit user confirmation; (3) restarts are refused when the server is detected in a crash loop unless force=true with a reason; (4) restart budgets (policy.maxRestartsPerHour) are enforced.",
+        "Starts, stops, restarts or kills a server. MUTATING and audited. Rules: (1) never restart before diagnosing, a restart destroys crash evidence and, for crash loops, guarantees another crash; (2) 'kill' is HIGH risk and requires confirm=true after explicit user confirmation; (3) restarts are refused when the server is detected in a crash loop unless force=true with a reason; (4) restart budgets (policy.maxRestartsPerHour) are enforced.",
       inputSchema: {
         server: serverArg,
         action: z.enum(["start", "stop", "restart", "kill"]),

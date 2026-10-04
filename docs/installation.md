@@ -2,7 +2,7 @@
 
 Every supported way to install and run PteroOps, with verification, updating, uninstalling and
 deployment recipes. If you are new here, start with
-[getting-started.md](getting-started.md) instead — this page is the reference.
+[getting-started.md](getting-started.md) instead, this page is the reference.
 
 ## Choose your method
 
@@ -19,7 +19,7 @@ deployment recipes. If you are new here, start with
 | systemd | bare-metal servers | root on that host | [G](#g-systemd) |
 | Offline / air-gapped | no internet on the target | local copy | [H](#h-offline--air-gapped) |
 
-All methods end in the same two modes — **stdio** (your AI app starts the process) or **HTTP**
+All methods end in the same two modes. **stdio** (your AI app starts the process) or **HTTP**
 (`/mcp`, `/ui`, `/health`, `/ready`, `/metrics`). Usage per client:
 [integrations.md](integrations.md).
 
@@ -56,7 +56,7 @@ curl -fsSL …/scripts/install.sh | PTEROOPS_METHOD=release PTEROOPS_VERSION=0.1
 curl -fsSL …/scripts/install.sh | PTEROOPS_METHOD=npm PTEROOPS_VERSION=0.1.0 bash
 ```
 
-If you prefer flags over piping to bash, download first — the script also supports
+If you prefer flags over piping to bash, download first, the script also supports
 `--method <source|release|npm>`:
 
 ```bash
@@ -120,9 +120,9 @@ installing so the PATH change applies.
 
 ## B. npm / npx
 
-The package ships compiled `dist/` only — no build step, no native dependencies.
+The package ships compiled `dist/` only, no build step, no native dependencies.
 
-**Zero-install (npx)** — your MCP client runs it on demand:
+**Zero-install (npx)**, your MCP client runs it on demand:
 
 ```json
 {
@@ -141,10 +141,10 @@ The package ships compiled `dist/` only — no build step, no native dependencie
 }
 ```
 
-`PTERO_DATA_DIR` keeps persistent state outside npx's cache (worth setting — otherwise each
+`PTERO_DATA_DIR` keeps persistent state outside npx's cache (worth setting, otherwise each
 npx version directory gets its own database).
 
-**Global install** — a real `pteroops` command everywhere:
+**Global install**, a real `pteroops` command everywhere:
 
 ```bash
 npm install -g pteroops-mcp
@@ -205,7 +205,7 @@ npm run build
 node dist/index.js --help
 ```
 
-Requirements: Node.js 22.13+ (24+ recommended). Plain `tsc` — no native toolchain, no
+Requirements: Node.js 22.13+ (24+ recommended). Plain `tsc`, no native toolchain, no
 postinstall script. Running the quality gates locally:
 
 ```bash
@@ -318,7 +318,7 @@ pteroops --help                         # CLI reference
 PTERO_PANEL_PROD_URL=… PTERO_PANEL_PROD_CLIENT_KEY=… pteroops --transport stdio
 ```
 
-The stdio start looks "stuck" — that is success: it is waiting for an MCP client. In your AI app,
+The stdio start looks "stuck", that is success: it is waiting for an MCP client. In your AI app,
 `ptero_get_capabilities` shows the live panels, capabilities and registered tools.
 
 HTTP mode verification:
@@ -373,7 +373,7 @@ your panel (Account → API Credentials).
 ## Remote access (TLS reverse proxy)
 
 `--transport http` enforces `Authorization: Bearer <PTERO_HTTP_TOKEN>` on non-loopback binds, but
-it speaks plain HTTP — put TLS in front:
+it speaks plain HTTP, put TLS in front:
 
 - nginx: [`deploy/nginx.conf.example`](../deploy/nginx.conf.example) (SSE-safe buffering off for `/mcp`)
 - Caddy: [`deploy/Caddyfile.example`](../deploy/Caddyfile.example) (automatic certificates)
@@ -383,7 +383,7 @@ Then point clients at `https://your-host/mcp` with the bearer token; the console
 
 ## Security notes
 
-- Piping a remote script into a shell deserves suspicion — read it first:
+- Piping a remote script into a shell deserves suspicion, read it first:
   `curl -fsSL …/scripts/install.sh | less`. Both scripts are short, use no `sudo` unless you opt in with
   `PTEROOPS_INSTALL_NODE=1`/`-InstallNode`, and only write inside your prefix/bin directories plus
   a clearly marked PATH line they remove on uninstall.

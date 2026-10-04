@@ -1,7 +1,7 @@
 # PteroOps docs site
 
 The org-styled documentation website for PteroOps: Vite + React + Tailwind, sharing the PotenFYR
-docs design tokens. It renders the repository markdown (`../*.md`) at build time — edit the
+docs design tokens. It renders the repository markdown (`../*.md`) at build time, edit the
 markdown, not the site, for content changes.
 
 ## Commands

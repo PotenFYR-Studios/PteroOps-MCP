@@ -1,7 +1,7 @@
 const PRINCIPLES = [
   {
     title: 'Evidence before action',
-    body: 'Every recommendation carries the facts behind it — process events, log patterns, diffs, health probes — or says what evidence is missing. Guessing is reported as guessing.',
+    body: 'Every recommendation carries the facts behind it, process events, log patterns, diffs, health probes, or says what evidence is missing. Guessing is reported as guessing.',
   },
   {
     title: 'Diff before write',
@@ -17,11 +17,11 @@ const PRINCIPLES = [
   },
   {
     title: 'Policy is the gate',
-    body: 'Capability check, policy and risk rating, audit record, change ledger — every mutating action walks the same path, including approvals and rollback arming.',
+    body: 'Capability check, policy and risk rating, audit record, change ledger, every mutating action walks the same path, including approvals and rollback arming.',
   },
   {
     title: 'Secrets never leak',
-    body: 'One redaction engine covers logs, errors, MCP payloads, audit events, console captures and incidents — with a dedicated test corpus for secret-bearing fields.',
+    body: 'One redaction engine covers logs, errors, MCP payloads, audit events, console captures and incidents, with a dedicated test corpus for secret-bearing fields.',
   },
 ];
 
@@ -34,7 +34,7 @@ export default function About() {
       </h1>
       <p className="mt-3 max-w-[760px] text-[1.04em] leading-[1.75] text-muted">
         PteroOps is an open-source MCP server by PotenFYR Studios. It gives any MCP-capable AI agent real operational
-        context for Pterodactyl — consoles, applications, changes, health and incidents — and a policy-controlled path
+        context for Pterodactyl, consoles, applications, changes, health and incidents, and a policy-controlled path
         to act on it: <span className="text-ink2">Observe → Detect → Correlate → Diagnose → Explain → Propose → Approve → Remediate → Verify → Roll back → Learn</span>.
       </p>
 
@@ -87,7 +87,7 @@ export default function About() {
           <p className="mono-label">Community</p>
           <h2 className="text-[1.05em] font-bold text-white">Discord</h2>
           <p className="text-[0.88em] leading-relaxed text-muted">
-            Questions, deployment help and design discussion. Ask before inventing behavior — that rule is in the
+            Questions, deployment help and design discussion. Ask before inventing behavior, that rule is in the
             agent guide too.
           </p>
           <a

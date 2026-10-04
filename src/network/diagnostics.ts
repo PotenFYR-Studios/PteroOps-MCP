@@ -100,7 +100,7 @@ export class NetworkDiagnosticEngine {
           detail: `allocations: ${allocations
             .map((allocation) => `${allocation.ip}:${allocation.port}${allocation.primary ? "*" : ""}`)
             .join(", ")}${primary ? "" : " (no primary allocation marked)"}${
-            duplicatePorts.length > 0 ? ` — duplicate ports: ${duplicatePorts.join(", ")}` : ""
+            duplicatePorts.length > 0 ? `: duplicate ports: ${duplicatePorts.join(", ")}` : ""
           }`,
         });
       }
@@ -254,7 +254,7 @@ export class NetworkDiagnosticEngine {
       const configured = Number(match[1]);
       return configured === allocationPort
         ? ` (server.properties already uses ${allocationPort})`
-        : ` — server.properties currently uses ${configured}, which does NOT match the allocation`;
+        : `: server.properties currently uses ${configured}, which does NOT match the allocation`;
     } catch {
       return "";
     }

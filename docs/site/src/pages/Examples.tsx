@@ -22,7 +22,7 @@ missing evidence: heap sizing in startup variables (checked: none set)`,
   },
   {
     title: 'Explain a change-correlated outage',
-    problems: 'A deploy went out tonight and the site is down. Something changed — but what?',
+    problems: 'A deploy went out tonight and the site is down. Something changed, but what?',
     calls: `ptero_get_change_history  { "server": "web-1", "since": "24h" }
 ptero_compare_known_good   { "server": "web-1" }
 ptero_git_history          { "server": "web-1", "limit": 10 }
@@ -34,7 +34,7 @@ suggested next step: inspect the changed file before any restart`,
   },
   {
     title: 'Remediate under policy, with rollback',
-    problems: 'The diagnosis is clear and a restart is the right move — but only after it is simulated and approved.',
+    problems: 'The diagnosis is clear and a restart is the right move, but only after it is simulated and approved.',
     calls: `ptero_propose_remediation  { "server": "web-1", "action": "restart" }
 ptero_simulate_remediation { "planId": "prem_..." }
 ptero_get_risk             { "action": "restart" }
@@ -71,7 +71,7 @@ export default function Examples() {
               <Pre lang="json">{s.calls}</Pre>
               <div>
                 <Pre lang="text">{s.outcome}</Pre>
-                <p className="mt-2 text-[12.5px] text-faint">Result excerpt — real responses include full evidence ids.</p>
+                <p className="mt-2 text-[12.5px] text-faint">Result excerpt, real responses include full evidence ids.</p>
               </div>
             </div>
           </section>

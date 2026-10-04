@@ -715,7 +715,7 @@ export class RemediationExecutor {
     for (const entry of [...executed].reverse()) {
       for (const step of entry.action.rollback) {
         const result = await this.executeRollbackStep(ref, step, plan, actor);
-        details.push(`${step.type}: ${result ? "ok" : "failed"} — ${step.description}`);
+        details.push(`${step.type}: ${result ? "ok" : "failed"}: ${step.description}`);
         if (!result) complete = false;
       }
     }

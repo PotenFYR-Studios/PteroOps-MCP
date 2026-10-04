@@ -31,7 +31,7 @@ const INSTRUCTIONS = [
   "2. Diagnose before restart: restarting destroys crash evidence. Use ptero_diagnose / ptero_analyze_logs first.",
   "3. Evidence before action: state observed facts, inferences and confidence separately (they are returned separately).",
   "4. Mutating tools are audited and policy-checked; HIGH/CRITICAL actions require explicit confirmation and approvals.",
-  "5. Never claim a fix worked because an API call succeeded — verify with ptero_get_health.",
+  "5. Never claim a fix worked because an API call succeeded, verify with ptero_get_health.",
   "6. Keep queries bounded; use windows/limits, never ask for unbounded console dumps.",
 ].join("\n");
 

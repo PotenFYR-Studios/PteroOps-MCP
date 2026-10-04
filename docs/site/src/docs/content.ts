@@ -48,7 +48,7 @@ export const DOC_PAGES: DocPage[] = [
     slug: 'capability-map',
     title: 'Capability map',
     category: 'Operate',
-    summary: 'What PteroOps can do for you, grouped by job to be done — with the tools, keys and risk level behind each.',
+    summary: 'What PteroOps can do for you, grouped by job to be done, with the tools, keys and risk level behind each.',
     raw: rawCapabilityMap,
     source: 'docs/capability-map.md',
   },

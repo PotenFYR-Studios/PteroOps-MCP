@@ -10,7 +10,7 @@
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1200&color=8B5CF6&center=true&vCenter=true&width=900&lines=Diagnose+before+restart.+Evidence+before+action.;Crash+loops+%E2%86%92+root+cause+%E2%86%92+safe+fix+%E2%86%92+automatic+rollback.;63+tools+%C2%B7+persistent+incidents+%C2%B7+cross-server+reasoning;Your+Pterodactyl+panel%2C+operated+safely+by+AI.)](https://github.com/PotenFYR-Studios/PteroOps-MCP)
 
-**PteroOps** turns Pterodactyl into an AI-operable SRE platform: persistent console intelligence, application detection, crash-loop and health diagnosis, incidents, change correlation, and policy-controlled remediation with rollback — exposed through the Model Context Protocol.
+**PteroOps** turns Pterodactyl into an AI-operable SRE platform: persistent console intelligence, application detection, crash-loop and health diagnosis, incidents, change correlation, and policy-controlled remediation with rollback, exposed through the Model Context Protocol.
 
 [Docs](docs/README.md) · [Getting Started](docs/getting-started.md) · [Installation](docs/installation.md) · [Capability Map](docs/capability-map.md) · [Issues](https://github.com/PotenFYR-Studios/PteroOps-MCP/issues)
 
@@ -20,7 +20,7 @@
 
 ## Install
 
-Pick a method — every one below is supported, tested and documented in
+Pick a method, every one below is supported, tested and documented in
 [docs/installation.md](docs/installation.md).
 
 | Method | Best for | One command |
@@ -37,7 +37,7 @@ Pick a method — every one below is supported, tested and documented in
 | **Offline / air-gapped** | no internet on the target | `PTEROOPS_SOURCE_DIR=… bash scripts/install.sh` |
 
 > Commands that call `scripts/install.sh` assume you are inside a checkout. If you downloaded the
-> script instead, drop the `scripts/` prefix — the file itself is named `install.sh`.
+> script instead, drop the `scripts/` prefix, the file itself is named `install.sh`.
 
 **Installer details:** it checks Node.js ≥ 22 (and can install it: `PTEROOPS_INSTALL_NODE=1` /
 `-InstallNode`), installs with your choice of `--method source|release|npm`, drops a `pteroops`
@@ -61,20 +61,20 @@ bash scripts/install.sh --uninstall [--purge]
 Posting `GET /status` is table stakes. PteroOps is the layer that **actually understands** what
 runs inside your servers:
 
-- **Persistent console intelligence** — every line stored, classified and fingerprinted, so
+- **Persistent console intelligence**, every line stored, classified and fingerprinted, so
   10,000 identical errors become one issue with a count, first/last occurrence and evidence.
-- **Application awareness** — detects `paper 1.21.4`, `node/express`, `python`, Valheim, … from
+- **Application awareness**, detects `paper 1.21.4`, `node/express`, `python`, Valheim, … from
   egg/docker/files/console with confidence + evidence, then applies a real profile
   (fatal signatures, ready markers, config locations, rollback targets).
-- **Change correlation** — every mutation lands in a change ledger with before/after hashes.
+- **Change correlation**, every mutation lands in a change ledger with before/after hashes.
   "What changed 4 minutes before the first error?" is one tool call.
-- **Cross-server reasoning** — shared nodes, databases and proxies are checked *before* touching
+- **Cross-server reasoning**, shared nodes, databases and proxies are checked *before* touching
   anything; correlated outages become one parent incident, not twelve alerts.
-- **Transactional remediation** — plan → risk → approval → backup → apply → verify → stabilize →
+- **Transactional remediation**, plan → risk → approval → backup → apply → verify → stabilize →
   or **automatic rollback**. Success means the app is healthy, not that HTTP returned 200.
-- **AI code debugging** — stack frames are mapped back to server files with bounded, numbered
+- **AI code debugging**, stack frames are mapped back to server files with bounded, numbered
   snippets; config files are syntax-validated; failing symbols are matched to shipped plugins.
-- **Never gets ahead of you** — policy engine, approvals, dry-runs, maintenance windows,
+- **Never gets ahead of you**, policy engine, approvals, dry-runs, maintenance windows,
   crash-loop restart guard, protected files, redacted secrets.
 
 ## Use it
@@ -84,8 +84,8 @@ trail:
 
 | Mode | Command | Used by |
 | --- | --- | --- |
-| **stdio** (default) | `pteroops --transport stdio` (or `npx -y pteroops-mcp`) | Claude Desktop, Claude Code, Cursor, VS Code — the client starts the process |
-| **HTTP** (server) | `pteroops --transport http --config pteroops.config.yaml` | remote agents, n8n/automation, fleets — endpoints `/mcp`, `/ui`, `/health`, `/ready`, `/metrics` |
+| **stdio** (default) | `pteroops --transport stdio` (or `npx -y pteroops-mcp`) | Claude Desktop, Claude Code, Cursor, VS Code, the client starts the process |
+| **HTTP** (server) | `pteroops --transport http --config pteroops.config.yaml` | remote agents, n8n/automation, fleets, endpoints `/mcp`, `/ui`, `/health`, `/ready`, `/metrics` |
 
 1. **Grab an API key.** Panel → avatar → **Account → API Credentials → Create API Key**
    (`ptlc_…`; add a `ptla_…` key for admin tools). Step-by-step:
@@ -108,7 +108,7 @@ trail:
 }
 ```
 
-Zero-install alternative — the client runs it via npx (published builds):
+Zero-install alternative, the client runs it via npx (published builds):
 
 ```json
 { "mcpServers": { "pteroops": { "command": "npx", "args": ["-y", "pteroops-mcp"],
@@ -116,7 +116,7 @@ Zero-install alternative — the client runs it via npx (published builds):
            "PTERO_PANEL_PROD_CLIENT_KEY": "ptlc_..." } } } }
 ```
 
-Remote/server mode — Claude Code, Cursor, VS Code and custom agents can also speak Streamable
+Remote/server mode. Claude Code, Cursor, VS Code and custom agents can also speak Streamable
 HTTP: `pteroops --transport http` behind TLS, then
 `claude mcp add pteroops --transport http https://pteroops.example.com/mcp --header "Authorization: Bearer $PTERO_HTTP_TOKEN"`.
 Reverse-proxy examples: [`deploy/nginx.conf.example`](deploy/nginx.conf.example),
@@ -130,7 +130,7 @@ Reverse-proxy examples: [`deploy/nginx.conf.example`](deploy/nginx.conf.example)
 3. **Ask.**
 
 > - "Use pteroops to check the health of all my servers and explain anything unhealthy. Do not restart anything."
-> - "The creative server broke after last night's update — what changed and why?"
+> - "The creative server broke after last night's update, what changed and why?"
 > - "Several servers went down at once. Investigate the shared cause before restarting anything."
 > - "Propose a fix for the crash loop, show me the risk and rollback, then wait for my approval."
 
@@ -150,13 +150,13 @@ opened · you approve → `ptero_execute_remediation` → restart → health che
 **succeeded**, or rollback if it got worse. Fully audited, fully reversible.
 
 A real captured session is in
-[docs/demo-transcript.md](docs/demo-transcript.md) — regenerate it yourself with `npm run demo`.
+[docs/demo-transcript.md](docs/demo-transcript.md), regenerate it yourself with `npm run demo`.
 
 ## Capability coverage
 
-Everything in the classic comparison matrix is implemented — discovery, status, resources, power,
+Everything in the classic comparison matrix is implemented, discovery, status, resources, power,
 console, files, backups, databases, schedules, allocations, subusers, admin API, auth,
-multi-tenancy, audit — plus the parts that make it an SRE layer:
+multi-tenancy, audit, plus the parts that make it an SRE layer:
 
 | Build / Improve | What PteroOps ships |
 | --- | --- |
@@ -177,7 +177,7 @@ multi-tenancy, audit — plus the parts that make it an SRE layer:
 | Self-healing | Policy + approvals + remediation transactions + rollback + effectiveness stats |
 | Proactive monitoring | Monitor loop, 6 scheduled job kinds, anomaly + disk forecasts |
 | Scheduled AI diagnostics | Deterministic analyzers on a schedule; the model gets the findings |
-| AI remediation / approvals | Plan, simulate, dry-run, approve, execute, roll back — MEDIUM+ gated |
+| AI remediation / approvals | Plan, simulate, dry-run, approve, execute, roll back. MEDIUM+ gated |
 | Multi-server incident investigation | One call scoped to server/node/panel/group |
 
 The full mapping (including the honest PARTIAL on Git dirty-state) lives in
@@ -206,7 +206,7 @@ when-NOT-to-use notes: [docs/mcp-reference.md](docs/mcp-reference.md).
 ## Configuration at a glance
 
 ```yaml
-# pteroops.config.yaml  (or pure env vars — the installer's JSON block works too)
+# pteroops.config.yaml  (or pure env vars, the installer's JSON block works too)
 panels:
   production:
     url: https://panel.example.com
@@ -237,7 +237,7 @@ Every option and env var: [docs/configuration.md](docs/configuration.md).
 - File edits require the current hash (stale-write refusal), snapshot first, diff and re-verify.
 - Crash-loop guard refuses blind restarts; restart budgets are enforced.
 - Every secret-bearing string passes the redaction engine (logs, errors, MCP, audit, console,
-  incidents) — covered by a dedicated test corpus.
+  incidents), covered by a dedicated test corpus.
 - Multi-tenant isolation is enforced in repositories, not just handlers.
 
 Threat model: [SECURITY.md](SECURITY.md).
@@ -257,7 +257,7 @@ docker run -d --name pteroops -v pteroops-data:/app/data \
 
 **Docker Compose:** `docker compose up -d` (edit the env defaults in `docker-compose.yml`).
 
-**Kubernetes:** `kubectl apply -f deploy/k8s.yaml` — Deployment + PVC + Service + probes; create
+**Kubernetes:** `kubectl apply -f deploy/k8s.yaml`. Deployment + PVC + Service + probes; create
 the `pteroops-secrets` secret first (the manifest documents the command). For multi-instance
 replicas switch storage to PostgreSQL and set a Redis URL for distributed locks.
 
@@ -306,9 +306,9 @@ investigation and remediation flows end-to-end.
 
 ## Contributing
 
-Small slices, tests with every behavior change, docs/status updated in the same change — see
+Small slices, tests with every behavior change, docs/status updated in the same change, see
 [CONTRIBUTING.md](CONTRIBUTING.md) and [AGENTS.md](AGENTS.md) for coding agents.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).

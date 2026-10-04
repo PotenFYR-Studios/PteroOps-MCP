@@ -1,9 +1,9 @@
 # Status
 
 Living tracker: what is **IMPLEMENTED**, **PARTIAL** (with the exact caveat) or **PLANNED**.
-Update it in the same change as the code — if this file and the code disagree, fix one immediately.
+Update it in the same change as the code, if this file and the code disagree, fix one immediately.
 
-**Current milestone:** all phases delivered — **63 MCP tools, 14 resources, 8 prompts;
+**Current milestone:** all phases delivered. **63 MCP tools, 14 resources, 8 prompts;
 270 tests on SQLite (3 DB/Redis cases skipped without env) · 273/273 with PostgreSQL 16 + Redis 7;
 lint/typecheck/build green; stdio + HTTP smoke-verified; web console; AI code debugging;
 installers + release pipeline; org-styled documentation site.**

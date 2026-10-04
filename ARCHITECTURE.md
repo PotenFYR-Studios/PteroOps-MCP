@@ -17,7 +17,7 @@ cross-cutting      config · security (capabilities, policy, redaction, audit) �
 
 Rules enforced by review and tests:
 
-- `mcp/*` imports services and shared types — never `fetch`, SQL, or adapters.
+- `mcp/*` imports services and shared types, never `fetch`, SQL, or adapters.
 - engines are pure (injected clock/ids), fully unit-testable.
 - repositories are interfaces; SQLite is one implementation. SQL stays portable.
 - adapters own retry/timeout/rate-limit/circuit behavior; services never re-implement it.

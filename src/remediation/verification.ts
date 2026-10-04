@@ -115,7 +115,7 @@ export class TestEngine {
       checks.push({
         name: "health",
         passed: acceptable,
-        detail: `${health.status} (score ${health.score}) — ${health.explanation}`,
+        detail: `${health.status} (score ${health.score}): ${health.explanation}`,
       });
     } catch (error) {
       checks.push({

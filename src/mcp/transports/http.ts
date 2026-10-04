@@ -86,7 +86,7 @@ export async function startHttpTransport(options: HttpTransportOptions): Promise
         res,
         401,
         `<!doctype html><html><body style="font-family:monospace;background:#0f1115;color:#d7dae0;padding:40px">
-        <h2>401 — token required</h2>
+        <h2>401: token required</h2>
         <p>Open <code>/ui?token=YOUR_TOKEN</code> once; a session cookie will be stored.</p></body></html>`,
       );
       return;

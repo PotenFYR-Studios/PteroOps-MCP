@@ -1,7 +1,7 @@
 # MCP Reference
 
 Complete surface of the PteroOps MCP server: **63 tools, 14 resources, 8 prompts**.
-Live availability also depends on configured credentials — call `ptero_get_capabilities` first.
+Live availability also depends on configured credentials, call `ptero_get_capabilities` first.
 A tool whose required capability is missing from every panel is **not registered**.
 
 Legend: **RO** read-only · **MUT** mutates state · Risk = default classification ·

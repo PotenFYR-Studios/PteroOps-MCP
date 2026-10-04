@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping build PteroOps — the AI operations layer for Pterodactyl.
+Thanks for helping build PteroOps, the AI operations layer for Pterodactyl.
 
 ## Ground rules
 
@@ -12,7 +12,7 @@ Thanks for helping build PteroOps — the AI operations layer for Pterodactyl.
    `docs/status.md` in the same change. Record design decisions under "Recorded decisions" in
    `ARCHITECTURE.md`.
 4. **Evidence discipline.** Features that encourage acting before evidence (auto-restart loops,
-   blind writes, "HTTP 200 = fixed") are rejected — see `AGENTS.md`, rule 5.
+   blind writes, "HTTP 200 = fixed") are rejected, see `AGENTS.md`, rule 5.
 5. **No secrets.** Never commit `.env`, tokens, `data/`, or `dist/`. Everything user-visible
    passes the redaction engine; new secret-bearing fields need a redaction test.
 6. **No fake implementations.** No stubs, no mocks in `src/`, no pseudocode. If it is not real,
@@ -42,8 +42,8 @@ npm run typecheck
 
 Test infrastructure lives in `tests/helpers/`:
 
-- `mock-panel.ts` — scriptable Pterodactyl HTTP server (auth, pagination, failure injection)
-- `services.ts` — builds the full service graph against an in-memory database
+- `mock-panel.ts`, scriptable Pterodactyl HTTP server (auth, pagination, failure injection)
+- `services.ts`, builds the full service graph against an in-memory database
 - MCP tests connect over an in-memory transport (no stdio/HTTP needed)
 
 ## Commit / PR checklist

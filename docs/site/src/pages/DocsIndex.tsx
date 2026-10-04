@@ -32,7 +32,7 @@ export default function DocsIndex() {
       ))}
 
       <p className="mt-12 text-[13px] text-faint">
-        These pages render the repository markdown from <code className="inline">docs/</code> — the same
+        These pages render the repository markdown from <code className="inline">docs/</code>, the same
         files GitHub and your AI tool read. Live status:{' '}
         <Link to="/status" className="text-link hover:text-linkh">
           project status

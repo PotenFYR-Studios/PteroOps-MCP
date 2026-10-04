@@ -35,7 +35,7 @@ function seoOrigin(): Plugin {
 
 /**
  * The site renders the repository's markdown docs (docs/*.md), which live
- * outside the Vite root — allow reading one level up and keep the raw imports working.
+ * outside the Vite root, allow reading one level up and keep the raw imports working.
  */
 function rawMarkdown(): Plugin {
   return {

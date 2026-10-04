@@ -8,7 +8,7 @@ import { startHttpTransport, type HttpTransportHandle } from "./mcp/transports/h
 import { PteroOpsError } from "./shared/errors.js";
 import { SERVER_NAME, VERSION } from "./shared/version.js";
 
-const USAGE = `${SERVER_NAME} v${VERSION} — AI SRE & self-healing operations for Pterodactyl
+const USAGE = `${SERVER_NAME} v${VERSION}: AI SRE & self-healing operations for Pterodactyl
 
 Usage:
   pteroops [--transport stdio|http] [--config <path>]

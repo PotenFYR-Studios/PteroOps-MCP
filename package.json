@@ -1,7 +1,7 @@
 {
   "name": "pteroops-mcp",
   "version": "0.1.0",
-  "description": "AI SRE & self-healing operations for Pterodactyl — MCP server with persistent console intelligence, application detection, incident management and policy-controlled remediation.",
+  "description": "AI SRE & self-healing operations for Pterodactyl: MCP server with persistent console intelligence, application detection, incident management and policy-controlled remediation.",
   "type": "module",
   "license": "MIT",
   "author": "PotenFYR Studios",

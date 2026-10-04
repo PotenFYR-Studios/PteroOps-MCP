@@ -1,12 +1,12 @@
-# Agent Guide — Operating PteroOps over MCP
+# Agent Guide. Operating PteroOps over MCP
 
 Audience: AI agents, LLM applications, and developers building agents on top of PteroOps.
 This document teaches **behavior**, not API signatures. Tool schemas: [`mcp-reference.md`](mcp-reference.md).
 
-> **Status note:** all designed phases are implemented — 55 tools, 14 resources, 8 prompts.
+> **Status note:** all designed phases are implemented. 55 tools, 14 resources, 8 prompts.
 > Per-tool details live in [`mcp-reference.md`](mcp-reference.md); honest limitations (Git
 > dirty-state needs an active console, backup-restore rollback is manual) are listed in
-> [`docs/status.md`](status.md). Always call `ptero_get_capabilities` first —
+> [`docs/status.md`](status.md). Always call `ptero_get_capabilities` first,
 > it reports which tools are actually registered with the configured credentials.
 
 ---
@@ -21,11 +21,11 @@ This document teaches **behavior**, not API signatures. Tool schemas: [`mcp-refe
 3. **Evidence before action.** Before proposing anything mutating, state: what you observed,
    what you infer, how confident you are, what you would do, what could go wrong, how to undo it.
 4. **Respect annotations and risk.** Every tool carries `readOnlyHint` / `destructiveHint`.
-   `ptero_get_risk` classifies proposed actions. HIGH/CRITICAL actions require approval —
+   `ptero_get_risk` classifies proposed actions. HIGH/CRITICAL actions require approval,
    never execute them unprompted.
 5. **Policy overrides you.** If policy denies an action, do not retry variations to bypass it.
    Report the denial and its reason.
-6. **Separate facts from hypotheses** — in your reasoning and your output. PteroOps returns
+6. **Separate facts from hypotheses**, in your reasoning and your output. PteroOps returns
    `observedFacts`, `probableCauses[].confidence` and `missingEvidence[]` separately; keep them separate.
 7. **Stay bounded.** Use the provided limits (`limit`, `window`, `maxLines`). Never request
    unbounded console output; PteroOps will cap it, but asking for it signals misunderstanding.
@@ -101,7 +101,7 @@ Always start here: `ptero_get_capabilities`.
 
 ---
 
-## 5. Worked example — crash loop
+## 5. Worked example, crash loop
 
 ```
 1. ptero_get_capabilities                          → panel "production" has client.console.read/write
@@ -127,9 +127,9 @@ Your user-facing summary (explainability template):
 
 - **Observed:** 4 OOM crashes in 45 min; plugin JAR changed 4 min before first crash.
 - **Meaning:** the new EssentialsX build exhausts the heap; the change is the likely trigger.
-- **Confidence:** 0.78 — strong temporal correlation, but not yet proven the plugin is the sole consumer.
+- **Confidence:** 0.78, strong temporal correlation, but not yet proven the plugin is the sole consumer.
 - **Proposed:** revert the plugin JAR (rollback: restore snapshot) or raise heap; both require approval.
-- **Risk / rollback:** MEDIUM (file restore is HIGH if chosen) — snapshot exists, reverse action is re-apply.
+- **Risk / rollback:** MEDIUM (file restore is HIGH if chosen), snapshot exists, reverse action is re-apply.
 
 ---
 
@@ -154,9 +154,9 @@ actions and call it correlation.
 | `observedFacts` | diagnostics, detection | Directly measured or read; no interpretation |
 | `probableCauses[].kind=inferred` | diagnostics | Concluded from facts via deterministic rules (e.g. pattern × timing) |
 | `hypotheses` | diagnostics | Plausible but unverified; requires more evidence |
-| `confidence` (0–1) | detection, causes | Derived from evidence weight/count — never random; treat < 0.5 as "ask, don't act" |
+| `confidence` (0–1) | detection, causes | Derived from evidence weight/count, never random; treat < 0.5 as "ask, don't act" |
 | `missingEvidence` | diagnostics | What would raise confidence; request it before acting on weak causes |
-| `evidence[]` | everywhere | Source, timestamp, excerpt/fingerprint — quote these, don't paraphrase away |
+| `evidence[]` | everywhere | Source, timestamp, excerpt/fingerprint, quote these, don't paraphrase away |
 
 **Confidence communication:** HIGH (exact fatal signature + known incompatible dependency),
 MEDIUM (strong correlation, incomplete evidence), LOW (weak circumstantial). Never present a
@@ -170,13 +170,13 @@ probable cause as a fact.
 | --- | --- |
 | LOW | May be auto-approved where configured; still audited |
 | MEDIUM | Requires approval unless the operator configured otherwise |
-| HIGH | Explicit approval required — ask the user in plain language |
+| HIGH | Explicit approval required, ask the user in plain language |
 | CRITICAL | Never automated. Explicit approval + strong confirmation; policy may deny outright |
 
 Rules: every mutating proposal states **exact actions, affected files/servers, reason, expected
 effect, risk, rollback, expiry**. Use `dryRun` whenever offered and show the exact operation,
 diff, restart requirement and rollback before asking for approval. If verification after a fix
-fails, the system rolls back and records it — report that outcome, never hide it.
+fails, the system rolls back and records it, report that outcome, never hide it.
 
 ---
 
@@ -185,9 +185,9 @@ fails, the system rolls back and records it — report that outcome, never hide 
 - Do not restart before diagnosing (unless the user explicitly instructs it after you explain).
 - Do not execute HIGH/CRITICAL actions without approval ("the user seemed to want it" is not approval).
 - Do not edit files without reading them first, or without a diff + rollback path.
-- Do not treat `ptero_power_action` returning success as "fixed" — verify with `ptero_get_health`.
+- Do not treat `ptero_power_action` returning success as "fixed", verify with `ptero_get_health`.
 - Do not request unbounded console dumps; use filters, windows and limits.
-- Do not repeat a past remediation just because operational memory shows it worked before —
+- Do not repeat a past remediation just because operational memory shows it worked before,
   revalidate the evidence for the *current* failure.
 - Do not put secrets in any tool input or message.
 - Do not present hypotheses as facts, or confidence as certainty.

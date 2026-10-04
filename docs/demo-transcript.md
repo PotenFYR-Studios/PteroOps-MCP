@@ -192,7 +192,7 @@
       "detail": "application ready marker observed"
     }
   ],
-  "explanation": "Survival: crash_loop — restart-frequency: 3 short-lived process exits in 15m 0s — warnings: memory-pressure",
+  "explanation": "Survival: crash_loop, restart-frequency: 3 short-lived process exits in 15m 0s, warnings: memory-pressure",
   "evidence": [
     "3 process starts within the last 15m 0s",
     "3 exits with a runtime shorter than 10m 0s",
@@ -545,7 +545,7 @@
         "detail": "application ready marker observed"
       }
     ],
-    "explanation": "Survival: crash_loop — restart-frequency: 3 short-lived process exits in 15m 0s — warnings: memory-pressure",
+    "explanation": "Survival: crash_loop, restart-frequency: 3 short-lived process exits in 15m 0s, warnings: memory-pressure",
     "evidence": [
       "3 process starts within the last 15m 0s",
       "3 exits with a runtime shorter than 10m 0s",

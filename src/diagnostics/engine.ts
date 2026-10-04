@@ -360,7 +360,7 @@ export class DiagnosticEngine {
       const evidence: EvidenceItem[] = [
         {
           source: "console",
-          detail: `${pattern.label} observed ${pattern.count}× — ${pattern.sample.slice(0, 180)}`,
+          detail: `${pattern.label} observed ${pattern.count}×: ${pattern.sample.slice(0, 180)}`,
           weight: 0.6,
           ts: pattern.firstSeen,
         },

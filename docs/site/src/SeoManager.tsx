@@ -4,7 +4,7 @@ import { DOC_PAGES } from './docs/content';
 
 const META: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'PteroOps — AI SRE & self-healing operations for Pterodactyl',
+    title: 'PteroOps. AI SRE & self-healing operations for Pterodactyl',
     description:
       'PteroOps turns Pterodactyl into an AI-operable SRE platform: persistent console intelligence, application detection, crash-loop diagnosis, incidents, change correlation and policy-controlled remediation with rollback, over MCP.',
   },
@@ -21,7 +21,7 @@ const META: Record<string, { title: string; description: string }> = {
   '/status': {
     title: 'Project status | PteroOps',
     description:
-      'Phase-by-phase delivery status for PteroOps: what is implemented, tested and verified — straight from the living status plan.',
+      'Phase-by-phase delivery status for PteroOps: what is implemented, tested and verified, straight from the living status plan.',
   },
   '/about': {
     title: 'About | PteroOps',

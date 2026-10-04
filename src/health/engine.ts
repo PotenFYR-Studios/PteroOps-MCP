@@ -190,7 +190,7 @@ export function assessHealth(input: HealthInput): HealthAssessment {
     status,
     score,
     checks,
-    explanation: explanationParts.join(" — "),
+    explanation: explanationParts.join(": "),
     evidence,
     assessedAt: input.assessedAt,
   };

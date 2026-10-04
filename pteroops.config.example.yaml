@@ -1,4 +1,4 @@
-# PteroOps configuration — copy to pteroops.config.yaml and fill in.
+# PteroOps configuration, copy to pteroops.config.yaml and fill in.
 # Values may reference environment variables with ${VAR} (required to be set).
 
 tenant: local

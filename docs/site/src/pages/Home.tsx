@@ -44,12 +44,12 @@ const WHY = [
   {
     n: '01',
     title: 'Persistent console intelligence',
-    body: 'PteroOps streams every console, classifies lines, fingerprints crashes and answers “what happened around 03:12?” from storage — not by asking you to paste logs.',
+    body: 'PteroOps streams every console, classifies lines, fingerprints crashes and answers “what happened around 03:12?” from storage, not by asking you to paste logs.',
   },
   {
     n: '02',
     title: 'Application detection',
-    body: 'Evidence-weighted detectors recognize Minecraft, Node (Next/Nuxt/SvelteKit/…), Python, PHP, Ruby, Go, Rust, Java, game servers and containers — confidence is never fabricated.',
+    body: 'Evidence-weighted detectors recognize Minecraft, Node (Next/Nuxt/SvelteKit/…), Python, PHP, Ruby, Go, Rust, Java, game servers and containers, confidence is never fabricated.',
   },
   {
     n: '03',
@@ -64,12 +64,12 @@ const WHY = [
   {
     n: '05',
     title: 'AI code debugging',
-    body: 'Stack frames are traced into bounded file snippets, source text can be searched safely, and config syntax checked — so the model debugs with real code, not guesses.',
+    body: 'Stack frames are traced into bounded file snippets, source text can be searched safely, and config syntax checked, so the model debugs with real code, not guesses.',
   },
   {
     n: '06',
     title: 'Policy-gated remediation',
-    body: 'Plan, simulate, risk-rate, approve, execute and verify — with automatic rollback, stabilization windows, canaries and honest effectiveness statistics.',
+    body: 'Plan, simulate, risk-rate, approve, execute and verify, with automatic rollback, stabilization windows, canaries and honest effectiveness statistics.',
   },
 ];
 
@@ -94,7 +94,7 @@ export default function Home() {
         </h1>
         <p className="mx-auto mt-5 max-w-[700px] text-[1.06em] leading-[1.75] text-muted">
           PteroOps turns your panel into an AI-operable SRE platform: it observes consoles, detects applications,
-          diagnoses crash loops, correlates incidents with changes and lets agents remediate — under policy, with
+          diagnoses crash loops, correlates incidents with changes and lets agents remediate, under policy, with
           approval, verification and rollback.
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">

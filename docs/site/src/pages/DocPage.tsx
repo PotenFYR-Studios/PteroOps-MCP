@@ -58,7 +58,7 @@ export default function DocPage() {
       <main className="mx-auto max-w-[820px] px-5 pb-20 pt-16 text-center">
         <h1 className="text-2xl font-bold text-white">Page not found</h1>
         <p className="mt-3 text-muted">
-          That doc doesn’t exist —{' '}
+          That doc doesn’t exist:{' '}
           <Link to="/docs" className="text-link hover:text-linkh">
             back to the docs index
           </Link>

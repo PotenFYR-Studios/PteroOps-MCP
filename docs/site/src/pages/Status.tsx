@@ -42,7 +42,7 @@ export default function Status() {
         <span className="grad-text">Project status</span>
       </h1>
       <p className="mt-3 max-w-[720px] text-[1.04em] leading-[1.75] text-muted">
-        What actually exists today — tracked per phase and module, verified by the test suite. If it is not real, it is
+        What actually exists today, tracked per phase and module, verified by the test suite. If it is not real, it is
         labeled PLANNED and it does not ship.
       </p>
 
@@ -93,7 +93,7 @@ export default function Status() {
       </section>
 
       <p className="mt-12 text-[13px] text-faint">
-        This page renders <code className="inline">docs/status.md</code> from the repository —{' '}
+        This page renders <code className="inline">docs/status.md</code> from the repository:{' '}
         <a
           href="https://github.com/PotenFYR-Studios/PteroOps-MCP/blob/main/docs/status.md"
           target="_blank"

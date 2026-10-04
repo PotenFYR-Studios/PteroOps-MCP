@@ -46,7 +46,7 @@ function layout(title: string, bodyHtml: string, options: { refreshSeconds?: num
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${escapeHtml(title)} — PteroOps</title>
+<title>${escapeHtml(title)}: PteroOps</title>
 ${refresh}
 <style>${STYLE}</style>
 </head>
@@ -288,7 +288,7 @@ export function renderTopology(graph: {
     "Topology",
     `
     <h2>Nodes (${String(graph.nodes.length)})</h2>
-    <table><thead><tr><th>kind</th><th>label</th><th>id</th></tr></thead><tbody>${nodes || '<tr><td colspan="3" class="muted">topology not built yet — run ptero_get_topology with rebuild</td></tr>'}</tbody></table>
+    <table><thead><tr><th>kind</th><th>label</th><th>id</th></tr></thead><tbody>${nodes || '<tr><td colspan="3" class="muted">topology not built yet; run ptero_get_topology with rebuild</td></tr>'}</tbody></table>
     <h2>Edges (${String(graph.edges.length)})</h2>
     <table><thead><tr><th>from</th><th>relation</th><th>to</th></tr></thead><tbody>${edges || '<tr><td colspan="3" class="muted">none</td></tr>'}</tbody></table>
     `,

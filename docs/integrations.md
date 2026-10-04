@@ -1,4 +1,4 @@
-# Integrations — Where PteroOps Is Usable
+# Integrations. Where PteroOps Is Usable
 
 PteroOps speaks MCP over **stdio** and **Streamable HTTP**, so anything that can host an MCP
 client can operate it. This page gives copy-paste setups. Live surface per release:
@@ -12,7 +12,7 @@ client can operate it. This page gives copy-paste setups. Live surface per relea
   - Windows: `irm https://raw.githubusercontent.com/PotenFYR-Studios/PteroOps-MCP/main/scripts/install.ps1 | iex`
 - A Pterodactyl panel URL and at least one API key (`ptlc_*` and/or `ptla_*`)
 
-The examples below use the paths the installer creates — `~/.pteroops/app/dist/index.js`
+The examples below use the paths the installer creates. `~/.pteroops/app/dist/index.js`
 (macOS/Linux) and `%LOCALAPPDATA%\PteroOps\app\dist\index.js` (Windows). Manual installs: use
 `node /path/to/PteroOps-MCP/dist/index.js` instead. Full install options:
 [installation.md](installation.md).
@@ -174,5 +174,5 @@ alert-driven `ptero_investigate_incident`.
 
 Every integration shares the same guarantees: capability gating, policy enforcement, approvals
 for risky actions, redaction, and audit. Agents that ignore approvals (e.g., standing scripts with
-auto-approval misconfigured) are a configuration risk — keep `approval.autoApprove` minimal and
+auto-approval misconfigured) are a configuration risk, keep `approval.autoApprove` minimal and
 scope `policy.allowedServers` where the platform supports it.
