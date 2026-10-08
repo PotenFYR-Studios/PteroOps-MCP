@@ -21,7 +21,7 @@
 ## Install
 
 Pick a method, every one below is supported, tested and documented in
-[https://docs.potenfyr.in/pteroops-mcp/installation](https://docs.potenfyr.in/pteroops-mcp/installation).
+[Installation](https://docs.potenfyr.in/pteroops-mcp/installation).
 
 | Method | Best for | One command |
 | --- | --- | --- |
@@ -121,7 +121,7 @@ HTTP: `pteroops --transport http` behind TLS, then
 `claude mcp add pteroops --transport http https://pteroops.example.com/mcp --header "Authorization: Bearer $PTERO_HTTP_TOKEN"`.
 Reverse-proxy examples: [`deploy/nginx.conf.example`](deploy/nginx.conf.example),
 [`deploy/Caddyfile.example`](deploy/Caddyfile.example). Full recipes:
-[https://docs.potenfyr.in/pteroops-mcp/integrations](https://docs.potenfyr.in/pteroops-mcp/integrations).
+[Integrations](https://docs.potenfyr.in/pteroops-mcp/integrations).
 
 > On Windows the installed path is `%LOCALAPPDATA%\PteroOps\app\dist\index.js` (the installer
 > prints the exact block). Prefer a config file to env vars? Point `PTEROOPS_CONFIG=~/pteroops.yaml`
@@ -150,7 +150,7 @@ opened · you approve → `ptero_execute_remediation` → restart → health che
 **succeeded**, or rollback if it got worse. Fully audited, fully reversible.
 
 A real captured session is in
-[https://docs.potenfyr.in/pteroops-mcp/demo-transcript](https://docs.potenfyr.in/pteroops-mcp/demo-transcript), regenerate it yourself with `npm run demo`.
+[Demo transcript](https://docs.potenfyr.in/pteroops-mcp/demo-transcript), regenerate it yourself with `npm run demo`.
 
 ## Capability coverage
 
@@ -181,7 +181,7 @@ multi-tenancy, audit, plus the parts that make it an SRE layer:
 | Multi-server incident investigation | One call scoped to server/node/panel/group |
 
 The full mapping (including the honest PARTIAL on Git dirty-state) lives in
-[https://docs.potenfyr.in/pteroops-mcp/capability-map](https://docs.potenfyr.in/pteroops-mcp/capability-map).
+[Capability Map](https://docs.potenfyr.in/pteroops-mcp/capability-map).
 
 ## MCP surface
 
@@ -201,7 +201,7 @@ The full mapping (including the honest PARTIAL on Git dirty-state) lives in
 
 Plus resources (`ptero://servers`, `ptero://server/{id}/health`, …) and prompts
 (`diagnose-server`, `investigate-crash-loop`, `prepare-remediation`, …). Schemas, annotations and
-when-NOT-to-use notes: [https://docs.potenfyr.in/pteroops-mcp/mcp-reference](https://docs.potenfyr.in/pteroops-mcp/mcp-reference).
+when-NOT-to-use notes: [MCP reference](https://docs.potenfyr.in/pteroops-mcp/mcp-reference).
 
 ## Configuration at a glance
 
@@ -227,7 +227,7 @@ storage:
   # redisUrl: redis://127.0.0.1:6379      # distributed locks
 ```
 
-Every option and env var: [https://docs.potenfyr.in/pteroops-mcp/configuration](https://docs.potenfyr.in/pteroops-mcp/configuration).
+Every option and env var: [Configuration](https://docs.potenfyr.in/pteroops-mcp/configuration).
 
 ## Security by default
 
@@ -267,26 +267,26 @@ user, put your env in `/etc/pteroops/pteroops.env` and `systemctl enable --now p
 **Remote access:** run with `--transport http` behind TLS (`deploy/nginx.conf.example` or
 `deploy/Caddyfile.example`); always set `PTERO_HTTP_TOKEN` off-loopback. Every deployment option
 (plus upgrading, uninstalling and air-gapped installs) is covered in
-[https://docs.potenfyr.in/pteroops-mcp/installation](https://docs.potenfyr.in/pteroops-mcp/installation).
+[Installation](https://docs.potenfyr.in/pteroops-mcp/installation).
 
 ## Documentation
 
-Rendered site (GitHub Pages, built from the markdown below): **<https://potenfyr-studios.github.io/PteroOps-MCP/>** ·
-local: `npm run docs:install && npm run docs:dev`.
+Rendered documentation: **https://docs.potenfyr.in/pteroops-mcp** ·
+local: Live docs also linked from every table row below.
 
 | Document | For |
 | --- | --- |
-| [Docs hub](https://docs.potenfyr.in/pteroops-mcp) | Index of everything in `docs/` |
-| [https://docs.potenfyr.in/pteroops-mcp/getting-started](https://docs.potenfyr.in/pteroops-mcp/getting-started) | Absolute beginners: keys, install, connect, first prompts, troubleshooting, FAQ |
-| [https://docs.potenfyr.in/pteroops-mcp/installation](https://docs.potenfyr.in/pteroops-mcp/installation) | Installer flags, manual install, Docker, update, uninstall, offline installs |
-| [https://docs.potenfyr.in/pteroops-mcp/capability-map](https://docs.potenfyr.in/pteroops-mcp/capability-map) | Every capability → the tools that deliver it |
-| [docs/agent-guide.md](docs/agent-guide.md) | AI agents: investigation ladder, tool chooser, evidence semantics |
-| [https://docs.potenfyr.in/pteroops-mcp/mcp-reference](https://docs.potenfyr.in/pteroops-mcp/mcp-reference) | Tool/resource/prompt reference with annotations |
-| [docs/monitoring.md](docs/monitoring.md) | Prometheus metrics, alert rules, logs, web console |
-| [https://docs.potenfyr.in/pteroops-mcp/configuration](https://docs.potenfyr.in/pteroops-mcp/configuration) | Config file, env vars, policy, schedules, storage backends |
-| [https://docs.potenfyr.in/pteroops-mcp/integrations](https://docs.potenfyr.in/pteroops-mcp/integrations) | Claude, Cursor, VS Code, custom agents, HTTP, Docker |
-| [https://docs.potenfyr.in/pteroops-mcp/demo-transcript](https://docs.potenfyr.in/pteroops-mcp/demo-transcript) | Real captured crash-loop investigation |
-| [docs/site/](docs/site/README.md) | The docs website source (Vite + React + Tailwind) |
+| [Docs hub](https://docs.potenfyr.in/pteroops-mcp) | Index of all PteroOps documentation |
+| [Getting Started](https://docs.potenfyr.in/pteroops-mcp/getting-started) | Absolute beginners: keys, install, connect, first prompts, troubleshooting, FAQ |
+| [Installation](https://docs.potenfyr.in/pteroops-mcp/installation) | Installer flags, manual install, Docker, update, uninstall, offline installs |
+| [Capability Map](https://docs.potenfyr.in/pteroops-mcp/capability-map) | Every capability → the tools that deliver it |
+| [Agent guide](https://docs.potenfyr.in/pteroops-mcp/agent-guide) | AI agents: investigation ladder, tool chooser, evidence semantics |
+| [MCP reference](https://docs.potenfyr.in/pteroops-mcp/mcp-reference) | Tool/resource/prompt reference with annotations |
+| [Monitoring](https://docs.potenfyr.in/pteroops-mcp/monitoring) | Prometheus metrics, alert rules, logs, web console |
+| [Configuration](https://docs.potenfyr.in/pteroops-mcp/configuration) | Config file, env vars, policy, schedules, storage backends |
+| [Integrations](https://docs.potenfyr.in/pteroops-mcp/integrations) | Claude, Cursor, VS Code, custom agents, HTTP, Docker |
+| [Demo transcript](https://docs.potenfyr.in/pteroops-mcp/demo-transcript) | Real captured crash-loop investigation |
+| [Docs source](https://github.com/PotenFYR-Studios/docs) | Unified docs hub source (Vite + React + TS + Bun) |
 | [ARCHITECTURE.md](ARCHITECTURE.md) · [SECURITY.md](SECURITY.md) | Design and threats |
 
 ## Development
@@ -306,7 +306,7 @@ investigation and remediation flows end-to-end.
 
 ## Contributing
 
-Small slices, tests with every behavior change, docs/status updated in the same change, see
+Small slices, tests with every behavior change, the docs hub updated in the same change, see
 [CONTRIBUTING.md](CONTRIBUTING.md) and [AGENTS.md](AGENTS.md) for coding agents.
 
 ## License
