@@ -272,7 +272,7 @@ user, put your env in `/etc/pteroops/pteroops.env` and `systemctl enable --now p
 ## Documentation
 
 Rendered documentation: **https://docs.potenfyr.in/pteroops-mcp** ·
-local: Live docs also linked from every table row below.
+Every table row below is mirrored in the hub.
 
 | Document | For |
 | --- | --- |
