@@ -12,7 +12,7 @@
 
 **PteroOps** turns Pterodactyl into an AI-operable SRE platform: persistent console intelligence, application detection, crash-loop and health diagnosis, incidents, change correlation, and policy-controlled remediation with rollback, exposed through the Model Context Protocol.
 
-[Docs](docs/README.md) · [Getting Started](docs/getting-started.md) · [Installation](docs/installation.md) · [Capability Map](docs/capability-map.md) · [Issues](https://github.com/PotenFYR-Studios/PteroOps-MCP/issues)
+[Docs](https://docs.potenfyr.in/pteroops-mcp) · [Getting Started](https://docs.potenfyr.in/pteroops-mcp/getting-started) · [Installation](https://docs.potenfyr.in/pteroops-mcp/installation) · [Capability Map](https://docs.potenfyr.in/pteroops-mcp/capability-map) · [Issues](https://github.com/PotenFYR-Studios/PteroOps-MCP/issues)
 
 </div>
 
