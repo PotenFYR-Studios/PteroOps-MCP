@@ -297,7 +297,6 @@ npm run typecheck   # strict TypeScript
 npm run test        # vitest: 270 tests (SQLite); 273 with PostgreSQL + Redis env vars
 npm run build       # tsc → dist/
 npm run demo        # regenerate https://docs.potenfyr.in/repo/pteroops-mcp/demo-transcript from a real run
-npm run docs:dev    # docs site dev server (first run: npm run docs:install)
 ```
 
 All four gates must pass before a change is complete. CI runs Node 22 + 24, a PostgreSQL 16

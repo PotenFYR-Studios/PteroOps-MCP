@@ -12,7 +12,7 @@
 - [Getting Started](docs/getting-started.md): complete beginner guide. Pterodactyl API keys, install, connect your AI app, first questions, troubleshooting, FAQ
 - [Installation](docs/installation.md): installer flags, manual install, Docker, update/uninstall, offline installs, security notes
 - [Docs Index](docs/README.md): index of every document in docs/
-- Rendered docs site (same content, for humans): https://potenfyr-studios.github.io/PteroOps-MCP/, built from these markdown files via `docs/site/`
+- Rendered docs site (same content, for humans): https://potenfyr-studios.github.io/PteroOps-MCP/
 
 ## Docs
 

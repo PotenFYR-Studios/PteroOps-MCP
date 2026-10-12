@@ -33,8 +33,6 @@ first change.
 | Run stdio | `node dist/index.js --transport stdio` |
 | Run HTTP | `node dist/index.js --transport http` |
 | Dev (tsc watch) | `npm run dev` |
-| Docs site (dev) | `npm run docs:install && npm run docs:dev` |
-| Docs site (build) | `npm run docs:build` |
 
 A change is only complete when `npm run lint && npm run typecheck && npm run test && npm run build`
 all pass. If those scripts do not exist yet, you are in the bootstrap phase, create them as
@@ -66,7 +64,7 @@ src/known-good     known-good state capture/compare
 src/monitoring     monitor loop, streamer manager, scheduler
 src/ui             read-only web console (render + dashboard service)
 src/mcp            server, registry, tools, resources, prompts, transports
-docs/              markdown docs (docs/*.md) + rendered docs site (docs/site, Vite + React + Tailwind)
+docs/              markdown docs, consolidated into the central hub (PotenFYR-Studios/docs)
 scripts/           install.sh / install.ps1 (one-liner installers) + demo transcript generator
 deploy/            Docker/K8s/systemd/reverse-proxy manifests
 tests/             unit | repository | integration | mcp

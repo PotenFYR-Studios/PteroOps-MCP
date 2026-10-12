@@ -2,6 +2,5 @@ node_modules
 dist
 data
 coverage
-docs/site
 package-lock.json
 *.md

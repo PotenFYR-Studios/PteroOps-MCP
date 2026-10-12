@@ -58,10 +58,6 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "demo": "node scripts/demo-transcript.mjs",
-    "docs:install": "npm --prefix docs/site install",
-    "docs:dev": "npm --prefix docs/site run dev",
-    "docs:build": "npm --prefix docs/site run build",
-    "docs:preview": "npm --prefix docs/site run preview",
     "prepack": "npm run build",
     "release:check": "npm run lint && npm run typecheck && npm run test && npm run build",
     "release:pack": "npm pack"

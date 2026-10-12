@@ -61,22 +61,6 @@ jobs:
         run: npm run test -- --reporter=json --outputFile=test-results.json
       - run: node -e "const r=require('./test-results.json'); if(r.numTotalTests < 200) process.exit(1); console.log('tests:', r.numTotalTests)"
 
-  docs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: docs/site/package-lock.json
-      - working-directory: docs/site
-        run: npm ci
-      - working-directory: docs/site
-        run: npm run build
-      - name: Assert the site build produced an entry document
-        run: test -f docs/site/dist/index.html
-
   security:
     runs-on: ubuntu-latest
     steps:
